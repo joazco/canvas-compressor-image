@@ -2,7 +2,7 @@
 
 An efficient JavaScript library that utilizes canvas to compress images by adjusting their quality or size. Ideal for optimizing images for better performance and faster loading times.
 
-[Online documentation](https://awesome-cordova-library.vercel.app/docs/plugins/compressor-image/)
+[Online documentation](https://awesome-cordova-library.vercel.app/docs/plugins/canvas-compressor-image/)
 
 [Online demo](https://awesome-cordova-library.vercel.app/compressor-image)
 
@@ -21,8 +21,21 @@ npm install canvas-compressor-image
 ### Declaration
 
 ```typescript
-export type FileExtension = 'jpg' | 'jpeg' | 'png' | 'webp' | 'gif' | 'bmp' | 'heic';
-export type OutputFormat = 'image/jpeg' | 'image/png' | 'image/webp' | 'image/gif' | 'image/bmp' | 'image/heic';
+export type FileExtension =
+  | "jpg"
+  | "jpeg"
+  | "png"
+  | "webp"
+  | "gif"
+  | "bmp"
+  | "heic";
+export type OutputFormat =
+  | "image/jpeg"
+  | "image/png"
+  | "image/webp"
+  | "image/gif"
+  | "image/bmp"
+  | "image/heic";
 export type CompressOptions = {
   src: string;
   targetLength: number;
@@ -61,14 +74,25 @@ export default class CompressorImage {
    * @params options {Pick<CompressOptions, 'src' | 'quality' | 'maxWidth' | 'maxHeight'>}
    */
   static compress(
-    options: Pick<CompressOptions, 'src' | 'quality' | 'maxWidth' | 'maxHeight' | 'outputFormat'>,
+    options: Pick<
+      CompressOptions,
+      "src" | "quality" | "maxWidth" | "maxHeight" | "outputFormat"
+    >
   ): Promise<CompressorImageReturn>;
   /**
    * Compresses the image to approximate a desired file size in MB.
    * @params options {Pick<CompressOptions, 'src' | 'minQuality' | 'targetLength' | 'maxWidth' | 'maxHeight'>}
    */
   static compressTargetLength(
-    options: Pick<CompressOptions, 'src' | 'minQuality' | 'targetLength' | 'maxWidth' | 'maxHeight' | 'outputFormat'>,
+    options: Pick<
+      CompressOptions,
+      | "src"
+      | "minQuality"
+      | "targetLength"
+      | "maxWidth"
+      | "maxHeight"
+      | "outputFormat"
+    >
   ): Promise<CompressorImageReturn>;
 }
 ```
@@ -80,12 +104,25 @@ export default class CompressorImage {
 ```typescript
 declare const useCompressorImage: () => {
   compress: (
-    options: Pick<CompressOptions, 'src' | 'quality' | 'maxWidth' | 'maxHeight' | 'outputFormat'>,
-  ) => Promise<import('../').CompressorImageReturn>;
+    options: Pick<
+      CompressOptions,
+      "src" | "quality" | "maxWidth" | "maxHeight" | "outputFormat"
+    >
+  ) => Promise<import("../").CompressorImageReturn>;
   compressTargetLength: (
-    options: Pick<CompressOptions, 'src' | 'minQuality' | 'targetLength' | 'maxWidth' | 'maxHeight' | 'outputFormat'>,
-  ) => Promise<import('../').CompressorImageReturn>;
-  determineOutputFormat: (extension: FileExtension) => import('../').OutputFormat;
+    options: Pick<
+      CompressOptions,
+      | "src"
+      | "minQuality"
+      | "targetLength"
+      | "maxWidth"
+      | "maxHeight"
+      | "outputFormat"
+    >
+  ) => Promise<import("../").CompressorImageReturn>;
+  determineOutputFormat: (
+    extension: FileExtension
+  ) => import("../").OutputFormat;
   sizeBase64ToMo: (base64: string) => number;
 };
 export default useCompressorImage;
