@@ -4,7 +4,7 @@ An efficient JavaScript library that utilizes canvas to compress images by adjus
 
 [Online documentation](https://awesome-cordova-library.vercel.app/docs/plugins/canvas-compressor-image/)
 
-[Online demo](https://awesome-cordova-library.vercel.app/compressor-image)
+[Online demo](https://awesome-cordova-library.vercel.app/canvas-compressor-image)
 
 ## Instruction
 
